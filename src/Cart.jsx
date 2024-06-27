@@ -23,10 +23,10 @@ export default function Cart({ categories, setSelectedCategory, selectedCategory
 
   return (
     <div className="min-h-[85vh] max-w-[900px] m-auto">
-      <Categories categories={categories} setSelectedCategory={setSelectedCategory} />
+      {/* <Categories categories={categories} setSelectedCategory={setSelectedCategory} /> */}
       <div className="flex justify-between">
         <p className="text-center text-2xl my-6">Total: ${totalPrice}</p>
-        {_cart && _cart.length > 0 && <button className="btn btn-accent">Checkout</button>}
+        {_cart && _cart.length > 0 && <button className="btn btn-accent mt-4">Checkout</button>}
       </div>
       <div>
         {_cart && _cart.length > 0 ? (
