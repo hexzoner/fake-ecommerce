@@ -1,7 +1,42 @@
 import React, { useEffect } from "react";
+import { capitalize } from "./App";
 const storageKey = "fake-ecommerce-theme";
 
 export default function Themes() {
+  const themes = [
+    "light",
+    "dark",
+    "cupcake",
+    "bumblebee",
+    "emerald",
+    "corporate",
+    "synthwave",
+    "retro",
+    "cyberpunk",
+    "valentine",
+    "halloween",
+    "garden",
+    "forest",
+    "aqua",
+    "lofi",
+    "pastel",
+    "fantasy",
+    "wireframe",
+    "black",
+    "luxury",
+    "dracula",
+    "cmyk",
+    "autumn",
+    "business",
+    "acid",
+    "lemonade",
+    "night",
+    "coffee",
+    "winter",
+    "dim",
+    "nord",
+    "sunset",
+  ];
   const [theme, setTheme] = React.useState("dark");
   React.useEffect(() => {
     document.querySelector("html").setAttribute("data-theme", theme);
@@ -17,23 +52,14 @@ export default function Themes() {
   }
 
   return (
-    <select onChange={handleChange} value={theme} className="gradientselect w-[120px] h-[36px] px-2" data-choose-theme>
-      {/* <option disabled className="bg-base-100" value="">
-        Theme
-      </option> */}
-      {/* <option value="">Default</option> */}
-      <option className="bg-base-100" value="light">
-        Light
-      </option>
-      <option className="bg-base-100" value="dark">
-        Dark
-      </option>
-      <option className="bg-base-100" value="cupcake">
-        Cupcake
-      </option>
-      <option className="bg-base-100" value="valentine">
-        Valentine
-      </option>
+    <select onChange={handleChange} value={theme} className="gradientselect w-[100px] h-[32px] px-2 text-xs" data-choose-theme>
+      {themes.map((theme) => {
+        return (
+          <option className="bg-base-100 text-xs" value={theme}>
+            {capitalize(theme)}
+          </option>
+        );
+      })}
     </select>
   );
 }
