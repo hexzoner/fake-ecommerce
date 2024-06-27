@@ -1,19 +1,21 @@
 import { useState } from "react";
+import { useOutletContext } from "react-router-dom";
 
-export default function CartItem({ product, cart, setCart, update, setUpdate }) {
+export default function CartItem({ product, update, setUpdate }) {
   //   console.log(product);
   const [cartProduct, setCartProduct] = useState(product);
+  const { _cart, _setCart } = useOutletContext();
 
   function onRemove() {
     if (product.qty > 0) {
-      const a = cart;
+      const a = _cart.slice();
       const found = a.find((x) => x.product.id === cartProduct.product.id);
       if (cartProduct.qty - 1 > 0) {
         a[a.indexOf(found)] = { product: cartProduct.product, qty: cartProduct.qty - 1 };
         setCartProduct({ product: cartProduct.product, qty: cartProduct.qty - 1 });
       } else a.splice(a.indexOf(found), 1);
 
-      setCart(a);
+      _setCart(a);
       setUpdate(!update);
     }
   }

@@ -15,7 +15,6 @@ export function capitalize(s) {
 function App() {
   // const [category, setCategory] = useState("");
   const [categories, setCategories] = useState([]);
-  const [cart, setCart] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
@@ -30,9 +29,9 @@ function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<MainLayout cart={cart} />}>
-        <Route index element={<Home categories={categories} cart={cart} setCart={setCart} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />} />
-        <Route path="cart" element={<Cart categories={categories} cart={cart} setCart={setCart} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />} />
+      <Route path="/" element={<MainLayout />}>
+        <Route index element={<Home categories={categories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />} />
+        <Route path="cart" element={<Cart categories={categories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />} />
         <Route path="product/:id" element={<ProductDetails categories={categories} />} />
         <Route path="*" element={<PageNotFound categories={categories} />} />
       </Route>
