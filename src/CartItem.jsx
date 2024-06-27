@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
+const key = "fake-ecommerce-cart";
 
 export default function CartItem({ product, update, setUpdate }) {
   //   console.log(product);
@@ -16,28 +17,29 @@ export default function CartItem({ product, update, setUpdate }) {
       } else a.splice(a.indexOf(found), 1);
 
       _setCart(a);
+      localStorage.setItem(key, JSON.stringify(a));
       setUpdate(!update);
     }
   }
 
   return (
     <div className="">
-      <div className="rounded-lg relative h-[200px] text-base-100 bg-base-content flex max-w-[1000px] m-auto bg-base-200  items-center ">
-        <div className="bg-white w-[220px]">
-          <img className=" m-auto h-[200px] object-scale-down" src={cartProduct.product.image} alt="" />
+      <div className=" relative h-[160px] flex max-w-[1000px] m-auto bg-base-300 items-center rounded-r-lg ">
+        <div className="bg-white w-[220px] rounded-l-lg">
+          <img className=" m-auto h-[160px] object-scale-down" src={cartProduct.product.image} alt="" />
         </div>
 
-        <div className="w-[80%] bg-base-300 pl-6 pt-2 flex flex-col justify-between h-full">
+        <div className="w-[80%] pl-6 pt-2 flex flex-col justify-between h-full">
           <div className="flex justify-between">
             <p className="text-base-content font-bold">{product.product.title}</p>
-            <button onClick={onRemove} className=" h-[36px] rounded-lg px-4 bg-primary text-primary-content hover:bg-error">
+            <button onClick={onRemove} className="btn btn-outline btn-error text-sm mr-2">
               Remove
             </button>
           </div>
           <p className="text-error font-bold text-lg">
             ${cartProduct.product.price} x {cartProduct.qty}
           </p>
-          <p className="text-base-content overflow-hidden pr-4 pb-2">{cartProduct.product.description}</p>
+          <p className="text-base-content text-xs overflow-hidden pr-4 pb-2">{cartProduct.product.description}</p>
         </div>
       </div>
     </div>

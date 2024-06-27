@@ -20,7 +20,7 @@ export default function Header({ cart }) {
           <NavLink to="cart" className={({ isActive }) => (isActive ? "text-base-100 bg-base-content px-5 py-1 rounded-lg" : "px-5 py-1 ")}>
             <div className="relative">
               <p className="text-lg ">Cart</p>
-              {cart.length > 0 && <p className="absolute bg-accent rounded-full px-2 bottom-4 left-10 text-accent-content">{cart.length}</p>}
+              {cart && cart.length > 0 && <p className="absolute bg-accent rounded-full px-2 bottom-4 left-10 text-accent-content">{cart.length}</p>}
             </div>
           </NavLink>
           <Themes></Themes>

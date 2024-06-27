@@ -1,5 +1,6 @@
 import { capitalize } from "./App";
 import { useOutletContext } from "react-router-dom";
+const key = "fake-ecommerce-cart";
 
 export default function ProductCard({ product, setSelectedCategory }) {
   const { _cart, _setCart } = useOutletContext();
@@ -15,9 +16,11 @@ export default function ProductCard({ product, setSelectedCategory }) {
       const a = _cart;
       a[a.indexOf(found)] = { product, qty: found.qty + 1 };
       _setCart(a);
+      localStorage.setItem(key, JSON.stringify(a));
       // console.log(a);
     } else {
       _setCart([..._cart, { product, qty: 1 }]);
+      localStorage.setItem(key, JSON.stringify([..._cart, { product, qty: 1 }]));
       // console.log([...cart, { product, qty: 1 }]);
     }
   }
@@ -29,26 +32,28 @@ export default function ProductCard({ product, setSelectedCategory }) {
 
   return (
     <div onClick={onProductClick} className="bg-base-300 rounded-lg relative h-[250px]  text-base-100 bg-base-content hover:cursor-pointer">
-      <div className="bg-white rounded-t-lg w-[95%] m-auto rounded-lg">
+      <div className="bg-white rounded-t-lg w-[95%] m-auto rounded-lg mt-1">
         <img className="rounded-lg m-auto h-[202px] object-scale-down" src={product.image} alt="" />
       </div>
 
       {/* <p>{product.title}</p> */}
-      <div className="flex justify-between items-center">
-        <div>
-          <p className="absolute top-0 text-sm rounded-t-lg font-bold bg-opacity-80 px-4 w-full text-center text-base-100 bg-base-content ">{product.title}</p>
-          <div className="absolute top-[180px] flex justify-between w-full px-1">
-            <p className=" rounded-lg px-2 bg-opacity-80 text-base-100 bg-base-content">${product.price}</p>
-            <p className=" rounded-lg px-2 bg-opacity-80 text-base-100 bg-base-content">
-              {product.rating.rate} ({product.rating.count})
-            </p>
+      <div className="flex justify-between items-center  ">
+        <div className="">
+          <p className="absolute top-0 text-xs rounded-t-lg font-bold bg-opacity-80 px-4 w-full text-center text-base-100 bg-base-content py-1 ">{product.title}</p>
+          <div className="absolute top-[182px] flex justify-between w-full">
+            <p className="rounded-lg px-2 bg-opacity-80 text-base-100 bg-base-content ml-2 relative bottom-1">${product.price}</p>
+            <div className="relative top-1 mr-2">
+              <p className="rounded-lg px-2 bg-opacity-80 text-base-100 bg-base-content text-xs ">
+                {product.rating.rate} ({product.rating.count})
+              </p>
+            </div>
           </div>
-          <p onClick={handleCategoryClick} className="hover:cursor-pointer hover:text-error pl-2">
+          <p onClick={handleCategoryClick} className="hover:cursor-pointer hover:text-error pl-4  text-xs relative top-2">
             {capitalize(product.category)}
           </p>
         </div>
         {/* <p className="text-ellipsis overflow-hidden">{product.description}</p> */}
-        <button onClick={onAddToCart} className="btn btn-neutral hover:btn-accent">
+        <button onClick={onAddToCart} className="btn btn-neutral hover:btn-accent px-3 btn-xs relative top-2 right-1">
           Add to Cart
         </button>
       </div>
