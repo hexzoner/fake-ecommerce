@@ -3,12 +3,13 @@ import Categories from "./Categories";
 import { useState } from "react";
 import CartItem from "./CartItem";
 import { ProductList } from "./ProductsList";
+import { useOutletContext } from "react-router-dom";
 // import { Navigate } from "react-router-dom";
 
-export default function Cart({ categories, setSelectedCategory, cart, setCart }) {
+export default function Cart({ categories, cart, setCart, setSelectedCategory }) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [update, setUpdate] = useState(true);
-
+  // const { setCart } = useOutletContext();
   useEffect(() => {}, [categories]);
 
   useEffect(() => {

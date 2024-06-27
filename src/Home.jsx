@@ -3,6 +3,7 @@ import axios from "axios";
 import Categories from "./Categories";
 import ProductCard from "./ProductCard";
 import { ProductList } from "./ProductsList";
+import { useOutletContext } from "react-router-dom";
 const productsAPI = `https://fakestoreapi.com/products`;
 const filterAPI = `https://fakestoreapi.com/products/category/`;
 
