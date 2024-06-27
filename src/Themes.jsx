@@ -55,7 +55,7 @@ export default function Themes() {
     <select onChange={handleChange} value={theme} className="gradientselect w-[100px] h-[32px] px-2 text-xs" data-choose-theme>
       {themes.map((theme) => {
         return (
-          <option className="bg-base-100 text-xs" value={theme}>
+          <option key={theme} className="bg-base-100 text-xs" value={theme}>
             {capitalize(theme)}
           </option>
         );
