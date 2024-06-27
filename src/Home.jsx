@@ -20,7 +20,6 @@ export default function Home({ categories, selectedCategory, setSelectedCategory
       .get(selectedCategory ? `${productsAPI}/${selectedCategory}` : productsAPI)
       .then((res) => {
         setProducts(res.data);
-        _setCart([]);
       })
       .catch((error) => console.error(error.message));
   }, [selectedCategory]);
