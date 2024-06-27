@@ -1,9 +1,15 @@
 import { capitalize } from "./App";
 import { Navigate } from "react-router-dom";
 
+function navigate() {
+  Navigate("/");
+}
+
 export default function Categories({ categories, setSelectedCategory }) {
   function handleClick(e) {
     e.target.textContent === "All" ? setSelectedCategory("") : setSelectedCategory("/category/" + e.target.textContent.toLowerCase());
+    // navigate();
+    // Navigate("/");
   }
 
   return (

@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+const storageKey = "fake-ecommerce-theme";
+
 export default function Themes() {
   const [theme, setTheme] = React.useState("dark");
   React.useEffect(() => {
     document.querySelector("html").setAttribute("data-theme", theme);
   }, [theme]);
 
+  useEffect(() => {
+    setTheme(JSON.parse(localStorage.getItem(storageKey)) || "dark");
+  }, []);
+
   function handleChange(e) {
     setTheme(e.target.value);
+    localStorage.setItem(storageKey, JSON.stringify(e.target.value));
   }
 
   return (
