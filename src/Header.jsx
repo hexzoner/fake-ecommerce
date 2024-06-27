@@ -1,13 +1,9 @@
 import React, { useEffect } from "react";
 import Themes from "./Themes";
 import { NavLink } from "react-router-dom";
-// import { useOutletContext } from "react-router-dom";
 
 export default function Header({ cart }) {
-  // const { _cart, _setCart } = useOutletContext();
-  useEffect(() => {
-    // console.log("hi from header");
-  }, [cart]);
+  useEffect(() => {}, [cart]);
 
   return (
     <div className="navbar bg-base-300 ">
