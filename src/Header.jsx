@@ -9,7 +9,9 @@ export default function Header({ cart }) {
     <div className="navbar bg-base-300 ">
       <div className="max-w-[700px] m-auto w-full">
         <div className="flex gap-2 items-center flex-wrap justify-around w-full">
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <a href="https://daisyui.com/docs/install/" target="_blank" className="btn btn-ghost text-xl">
+            daisyUI
+          </a>
           <NavLink to="/" className={({ isActive }) => (isActive ? "text-base-100 bg-base-content px-4 py-1 rounded-lg" : "px-4 py-1")}>
             <p className="text-lg">Home</p>
           </NavLink>

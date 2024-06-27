@@ -31,7 +31,7 @@ export default function ProductCard({ product, setSelectedCategory }) {
   }
 
   return (
-    <div onClick={onProductClick} className="bg-base-300 rounded-lg relative h-[250px]  text-base-100 bg-base-content hover:cursor-pointer">
+    <div onClick={onProductClick} className=" rounded-lg relative h-[250px]  text-base-100 bg-base-content hover:cursor-pointer">
       <div className="bg-white rounded-t-lg w-[95%] m-auto rounded-lg mt-1">
         <img className="rounded-lg m-auto h-[202px] object-scale-down" src={product.image} alt="" />
       </div>
