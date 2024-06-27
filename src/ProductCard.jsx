@@ -1,21 +1,23 @@
 import { capitalize } from "./App";
+import { useOutletContext } from "react-router-dom";
 
-export default function ProductCard({ product, cart, setCart, setSelectedCategory }) {
+export default function ProductCard({ product, setSelectedCategory }) {
+  const { _cart, _setCart } = useOutletContext();
   function onProductClick(e) {
     // console.log(product.title);
   }
 
   function onAddToCart(e) {
-    const found = cart.find((x) => x.product.id === product.id);
+    const found = _cart.find((x) => x.product.id === product.id);
     // console.log(cart);
 
     if (found) {
-      const a = cart;
+      const a = _cart;
       a[a.indexOf(found)] = { product, qty: found.qty + 1 };
-      setCart(a);
+      _setCart(a);
       // console.log(a);
     } else {
-      setCart([...cart, { product, qty: 1 }]);
+      _setCart([..._cart, { product, qty: 1 }]);
       // console.log([...cart, { product, qty: 1 }]);
     }
   }
@@ -34,8 +36,8 @@ export default function ProductCard({ product, cart, setCart, setSelectedCategor
       {/* <p>{product.title}</p> */}
       <div className="flex justify-between items-center">
         <div>
-          <p className="absolute top-0 text-sm rounded-t-lg font-bold bg-opacity-80 px-4 w-full text-center text-base-100 bg-base-content">{product.title}</p>
-          <div className="absolute top-[170px] flex justify-between w-full">
+          <p className="absolute top-0 text-sm rounded-t-lg font-bold bg-opacity-80 px-4 w-full text-center text-base-100 bg-base-content ">{product.title}</p>
+          <div className="absolute top-[180px] flex justify-between w-full px-1">
             <p className=" rounded-lg px-2 bg-opacity-80 text-base-100 bg-base-content">${product.price}</p>
             <p className=" rounded-lg px-2 bg-opacity-80 text-base-100 bg-base-content">
               {product.rating.rate} ({product.rating.count})
